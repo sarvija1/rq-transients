@@ -8,6 +8,6 @@ export const diff = (
     .reduce<string[]>((acc, [currentKey, currentValue]) => {
       const maybeNewValue = newTransients[currentKey]
       return (maybeNewValue !== undefined && maybeNewValue !== currentValue)
-        ? [...acc, `${labelTransient(currentKey)}: ${currentValue} -> ${maybeNewValue}`]
+        ? [...acc, `${labelTransient(currentKey)}: ${currentValue} → ${maybeNewValue}`]
         : acc
     }, [])
