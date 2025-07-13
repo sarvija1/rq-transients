@@ -1,0 +1,21 @@
+{
+  "name": "rq-transients",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "diff": "ts-node ./src/index.ts",
+    "test": "ts-node-test ./src/__tests__/*.test.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^24.0.13"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "ts-node-test": "^0.4.4",
+    "zod": "^4.0.5"
+  }
+}
