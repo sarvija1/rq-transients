@@ -9,7 +9,8 @@ const labels: Record<string, string> = {
   abdomen: "Hit points, abdomen",
   chest: "Hit points: chest",
   arms: "Hit points, arms",
-  head: "Hit points, head"
+  head: "Hit points, head",
+  healingRate: "Healing rate"
 }
 
 export const labelTransient = (key: string): string => {
