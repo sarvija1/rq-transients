@@ -1,9 +1,14 @@
 import type { Stats } from './stats.ts'
-import { calculateHitPoints } from './hit-points.ts'
+import { calculateLocationHitPoints, calculateTotalHitPoints } from './hit-points.ts'
 
 const labels: Record<string, string> = {
   magicPoints: "Magic points",
-  hitPoints: "Hit points"
+  hitPoints: "Hit points, total",
+  legs: "Hit points, legs",
+  abdomen: "Hit points, abdomen",
+  chest: "Hit points: chest",
+  arms: "Hit points, arms",
+  head: "Hit points, head"
 }
 
 export const labelTransient = (key: string): string => {
@@ -13,5 +18,6 @@ export const labelTransient = (key: string): string => {
 
 export const calculateTransients = (stats: Stats): Record<string, number> => ({
   magicPoints: stats.pow,
-  hitPoints: calculateHitPoints(stats)
+  hitPoints: calculateTotalHitPoints(stats),
+  ...calculateLocationHitPoints(calculateTotalHitPoints(stats))
 })
