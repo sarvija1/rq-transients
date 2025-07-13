@@ -1,8 +1,8 @@
 import { labelTransient } from './transients.ts'
 
 export const diff = (
-  currentTransients: Record<string, number>,
-  newTransients: Record<string, number>
+  currentTransients: Record<string, number | string>,
+  newTransients: Record<string, number | string>
 ): string[] =>
   Object.entries(currentTransients)
     .reduce<string[]>((acc, [currentKey, currentValue]) => {
