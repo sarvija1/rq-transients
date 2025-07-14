@@ -5,13 +5,16 @@
   "main": "index.ts",
   "scripts": {
     "diff": "ts-node ./src/index.ts",
-    "test": "ts-node-test ./src/__tests__/*.test.ts"
+    "test": "jest ./src/__tests__/*.test.ts"
   },
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "@types/node": "^24.0.13"
+    "@jest/globals": "^30.0.4",
+    "@types/node": "^24.0.13",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0"
   },
   "dependencies": {
     "ts-node": "^10.9.2",

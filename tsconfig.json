@@ -2,13 +2,14 @@
    "compilerOptions": {
      "noEmit": true,
      "target": "esnext",
-     "module": "nodenext",
-     "rewriteRelativeImportExtensions": true,
-     "erasableSyntaxOnly": true,
-     "verbatimModuleSyntax": true,
+     "module": "commonjs",
      "moduleResolution": "node",
-     "allowImportingTsExtensions": true,
      "strict": true,
-     "noImplicitAny": true
-  }
+     "noImplicitAny": true,
+     "isolatedModules": true
+  },
+  "exclude": [
+    "jest.config.js",
+    "node_modules"
+  ]
 }
