@@ -32,9 +32,13 @@ To start, copy `.current.example.json` to `.current.json`
 
 This is your character's current stats and won't be tracked by git.
 
+To display all transients for the current stats, type:
+
+    npm run attr
+
 To check transient attribute changes, type for example:
 
-    npm run diff pow=20
+    npm run attr pow=20
 
 This shows attributes that change with the new stat, for example:
 

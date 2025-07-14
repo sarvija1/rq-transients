@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "diff": "ts-node ./src/index.ts",
+    "attr": "ts-node ./src/index.ts",
     "test": "jest ./src/__tests__/*.test.ts"
   },
   "author": "",

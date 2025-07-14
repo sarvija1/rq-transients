@@ -1,6 +1,6 @@
 import { labelTransient } from './transients.ts'
 
-export const diff = (
+export const formatDiff = (
   currentTransients: Record<string, number | string>,
   newTransients: Record<string, number | string>
 ): string[] =>
@@ -11,3 +11,7 @@ export const diff = (
         ? [...acc, `${labelTransient(currentKey)}: ${currentValue} → ${maybeNewValue}`]
         : acc
     }, [])
+
+export const formatTransients = (currentTransients: Record<string, number | string>) =>
+  Object.entries(currentTransients)
+    .map(([key, value]) => `${labelTransient(key)}: ${value}`)
