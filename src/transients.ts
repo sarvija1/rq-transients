@@ -2,6 +2,7 @@ import type { Stats } from './stats.ts'
 import { calculateLocationHitPoints, calculateTotalHitPoints } from './hit-points.ts'
 import { calculateHealingRate } from './healing-rate.ts'
 import { calculateDamageBonus } from './damage-bonus.ts'
+import { calculateSpiritCombatDamage } from './spirit-combat-damage.ts'
 
 const labels: Record<string, string> = {
   magicPoints: "Magic points",
@@ -12,7 +13,8 @@ const labels: Record<string, string> = {
   arms: "Hit points, arms",
   head: "Hit points, head",
   healingRate: "Healing rate",
-  damageBonus: "Damage bonus"
+  damageBonus: "Damage bonus",
+  spiritCombatDamage: "Spirit combat damage"
 }
 
 export const labelTransient = (key: string): string => {
@@ -25,5 +27,6 @@ export const calculateTransients = (stats: Stats): Record<string, number | strin
   hitPoints: calculateTotalHitPoints(stats),
   ...calculateLocationHitPoints(calculateTotalHitPoints(stats)),
   healingRate: calculateHealingRate(stats),
-  damageBonus: calculateDamageBonus(stats)
+  damageBonus: calculateDamageBonus(stats),
+  spiritCombatDamage: calculateSpiritCombatDamage(stats)
 })
