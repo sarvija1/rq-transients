@@ -3,6 +3,7 @@ import { calculateLocationHitPoints, calculateTotalHitPoints } from './hit-point
 import { calculateHealingRate } from './healing-rate.ts'
 import { calculateDamageBonus } from './damage-bonus.ts'
 import { calculateSpiritCombatDamage } from './spirit-combat-damage.ts'
+import { calculateMaximumEnc } from './maximum-enc.ts'
 
 const labels: Record<string, string> = {
   magicPoints: "Magic points",
@@ -14,7 +15,8 @@ const labels: Record<string, string> = {
   head: "Hit points, head",
   healingRate: "Healing rate",
   damageBonus: "Damage bonus",
-  spiritCombatDamage: "Spirit combat damage"
+  spiritCombatDamage: "Spirit combat damage",
+  maximumEnc: "Maximum ENC"
 }
 
 export const labelTransient = (key: string): string => {
@@ -28,5 +30,6 @@ export const calculateTransients = (stats: Stats): Record<string, number | strin
   ...calculateLocationHitPoints(calculateTotalHitPoints(stats)),
   healingRate: calculateHealingRate(stats),
   damageBonus: calculateDamageBonus(stats),
-  spiritCombatDamage: calculateSpiritCombatDamage(stats)
+  spiritCombatDamage: calculateSpiritCombatDamage(stats),
+  maximumEnc: calculateMaximumEnc(stats)
 })
