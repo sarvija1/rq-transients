@@ -10,8 +10,6 @@ const args = process.argv.slice(2)
 const currentTransients = calculateTransients(currentStats)
 
 if (args.length === 0) {
-//  formatTransients(currentTransients)
-//    .forEach(transient => console.log(transient))
   console.log(formatOutput(currentTransients))
 } else {
   const newStats = argsToPartialStats(args)
