@@ -15,7 +15,9 @@ export const calculateTotalHitPoints = (stats: Stats): number => {
   return conMod + sizMod + powMod
 }
 
-const locationsFromBaseValue = (base: number): Record<string, number> => ({
+export type HitLocationLiteral = 'legs' | 'abdomen' | 'chest' | 'arms' | 'head'
+
+const locationsFromBaseValue = (base: number): Record<HitLocationLiteral, number> => ({
   legs: base + 1,
   abdomen: base + 1,
   chest: base + 2,
@@ -23,7 +25,7 @@ const locationsFromBaseValue = (base: number): Record<string, number> => ({
   head: base + 1
 })
 
-export const calculateLocationHitPoints = (totalHitPoints: number): Record<string, number> => {
+export const calculateLocationHitPoints = (totalHitPoints: number): Record<HitLocationLiteral, number> => {
   const baseValue = totalHitPoints <= 6 ? 1 : Math.floor((totalHitPoints - 1) / 3)
   return locationsFromBaseValue(baseValue)
 }
