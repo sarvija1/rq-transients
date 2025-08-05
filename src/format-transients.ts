@@ -1,4 +1,3 @@
-import { labelTransient } from './transients.ts'
 import type { AttributeLiteral } from './transients.ts'
 
 export const formatDiff = (
