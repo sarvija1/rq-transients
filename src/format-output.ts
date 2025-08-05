@@ -14,7 +14,7 @@ const control = {
   col: '\x1b[25G'  // Align values to col 25
 }
 
-const formatSection = (label: string, partial: Record<AttributeLiteral, unknown>) => {
+const formatSection = (label: string, partial: Partial<Record<AttributeLiteral, unknown>>) => {
     const actual = Object.entries(partial)
       .filter(([_, value]) => value !== undefined)
     return actual.length > 0
@@ -33,8 +33,7 @@ export const formatOutput = (transients: Record<AttributeLiteral, number | strin
       chest: transients.chest,
       abdomen: transients.abdomen,
       legs: transients.legs
-  } as Record<AttributeLiteral, number | string>) +
-
+  }) +
   formatSection('Skill Modifiers', {
       agilitySkillModifier: transients.agilitySkillModifier,
       communicationSkillModifier: transients.communicationSkillModifier,
@@ -43,8 +42,7 @@ export const formatOutput = (transients: Record<AttributeLiteral, number | strin
       manipulationSkillModifier: transients.manipulationSkillModifier,
       perceptionSkillModifier: transients.perceptionSkillModifier,
       stealthSkillModifier: transients.stealthSkillModifier
-  } as Record<AttributeLiteral, number | string>) +
-
+  }) +
   formatSection("Other", {
       healingRate: transients.healingRate,
       dexStrikeRank: transients.dexStrikeRank,
@@ -52,4 +50,4 @@ export const formatOutput = (transients: Record<AttributeLiteral, number | strin
       damageBonus: transients.damageBonus,
       spiritCombatDamage: transients.spiritCombatDamage,
       magicPoints: transients.magicPoints
-  } as Record<AttributeLiteral, number | string>)
+  })
