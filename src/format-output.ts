@@ -25,7 +25,7 @@ const formatSection = (label: string, partial: Partial<Record<AttributeLiteral, 
       : ''
 }
 
-export const formatOutput = (transients: Record<AttributeLiteral, number | string>): string =>
+export const formatOutput = (transients: Record<AttributeLiteral, unknown>): string =>
   formatSection("Hit Points", {
       hitPoints: transients.hitPoints,
       head: transients.head,

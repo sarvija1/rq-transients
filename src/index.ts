@@ -16,5 +16,10 @@ if (args.length === 0) {
   const newTransients = calculateTransients({ ...currentStats, ...newStats })
   const changes = formatDiff(currentTransients, newTransients)
 
-  console.log(formatOutput(changes))
+  const output = formatOutput(changes)
+  if (output.length === 0) {
+    console.log("No changes\n")
+  } else {
+    console.log(output)
+  }
 }
