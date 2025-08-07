@@ -1,7 +1,7 @@
 import { readCurrentStats } from './stats.ts'
 import { argsToPartialStats } from './args.ts'
 import { calculateTransients } from './transients.ts'
-import { formatTransients, formatDiff } from './format-transients.ts'
+import { formatDiff } from './format-transients.ts'
 import { formatOutput } from './format-output.ts'
 
 const currentStats = await readCurrentStats('./.current.json')
@@ -16,9 +16,10 @@ if (args.length === 0) {
   const newTransients = calculateTransients({ ...currentStats, ...newStats })
   const changes = formatDiff(currentTransients, newTransients)
 
-  if (changes.length === 0) {
-    console.log('No changes')
+  const output = formatOutput(changes)
+  if (output.length === 0) {
+    console.log("No changes\n")
   } else {
-    changes.forEach(change => console.log(change))
+    console.log(output)
   }
 }

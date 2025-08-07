@@ -20,44 +20,52 @@ const sumAndFormat = (modifiers: number[]) => {
 const minusFiveToFive = [ -5, 0, 0, 0, 5, 5 ] as StatBrackets
 const minusTenToTen = [ -10, -5, 0, 5, 10, 5 ] as StatBrackets
 
+export type SkillModifierLiteral = 'agilitySkillModifier' |
+  'communicationSkillModifier' |
+  'knowledgeSkillModifier' |
+  'magicSkillModifier' |
+  'manipulationSkillModifier' |
+  'perceptionSkillModifier' |
+  'stealthSkillModifier'
+
 // Fun fact: CON is not used in any of these
-export const calculateAllSkillModifiers = ({ str, siz, dex, int, pow, cha }: Stats) =>
-  Object.entries({
-    agilitySkillModifier: [
+export const calculateAllSkillModifiers = (
+  { str, siz, dex, int, pow, cha }: Stats
+): Record<SkillModifierLiteral, string> =>
+  ({
+    agilitySkillModifier: sumAndFormat([
       skillModifier(str, minusFiveToFive),
       skillModifier(siz, [ 5, 0, 0, 0, -5, -5 ]),
       skillModifier(dex, minusTenToTen),
       skillModifier(pow, minusFiveToFive)
-    ],
-    communicationSkillModifier: [
+    ]),
+    communicationSkillModifier: sumAndFormat([
       skillModifier(int, minusFiveToFive),
       skillModifier(pow, minusFiveToFive),
       skillModifier(cha, minusTenToTen),
-    ],
-    knowledgeSkillModifier: [
+    ]),
+    knowledgeSkillModifier: sumAndFormat([
       skillModifier(int, minusTenToTen),
       skillModifier(pow, minusFiveToFive),
-    ],
-    magicSkillModifier: [
+    ]),
+    magicSkillModifier: sumAndFormat([
       skillModifier(pow, minusTenToTen),
       skillModifier(cha, minusFiveToFive)
-    ],
-    manipulationSkillModifier: [
+    ]),
+    manipulationSkillModifier: sumAndFormat([
       skillModifier(str, minusFiveToFive),
       skillModifier(dex, minusTenToTen),
       skillModifier(int, minusTenToTen),
       skillModifier(pow, minusFiveToFive)
-    ],
-    perceptionSkillModifier: [
+    ]),
+    perceptionSkillModifier: sumAndFormat([
       skillModifier(int, minusTenToTen),
       skillModifier(pow, minusFiveToFive)
-    ],
-    stealthSkillModifier: [
+    ]),
+    stealthSkillModifier: sumAndFormat([
       skillModifier(siz, [ 10, 5, 0, -5, -10, -5 ]),
       skillModifier(dex, minusTenToTen),
       skillModifier(int, minusTenToTen),
       skillModifier(pow, [ 5, 0, 0, 0, -5, -5 ])
-    ]
+    ])
   })
-    .map(([ key, values ]) => ({ [key]: sumAndFormat(values) }))
-    .reduce((acc, entry) => ({ ...acc, ...entry }), {})
