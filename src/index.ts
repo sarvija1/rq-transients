@@ -4,7 +4,8 @@ import { calculateTransients } from './transients.ts'
 import { formatDiff } from './format-transients.ts'
 import { formatOutput } from './format-output.ts'
 
-const currentStats = await readCurrentStats('./.current.json')
+const filePath = process.env.STATS ?? './.current.json'
+const currentStats = await readCurrentStats(filePath)
 
 const args = process.argv.slice(2)
 const currentTransients = calculateTransients(currentStats)
