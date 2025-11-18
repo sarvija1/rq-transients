@@ -9,9 +9,13 @@ const singleStatRecordSchema = z.partialRecord(
   z.int().min(1)
 )
 
-export const argsToPartialStats = (args: string[]): Partial<Record<StatLiteral, number>> =>
-  args.map(arg => {
+export const parseArgs = (args: string[]) => {
+  const shouldSave = args.includes('save')
+  const statArgs = args.filter(arg => arg !== '-s' && arg.includes('='))
+  const stats = statArgs.map(arg => {
     const split = arg.split('=')
     return singleStatRecordSchema.parse({ [split[0]]: Number(split[1]) })
   }).reduce((acc, stat) =>
     ({ ...acc, ...stat}), {})
+  return { stats, shouldSave }
+}
