@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 import { z } from 'zod'
 
 const statsSchema = z.object({
@@ -21,3 +21,11 @@ export const readCurrentStats = async (
       (await readFile(filePath)).toString('utf8')
     )
   )
+
+export const writeCurrentStats = async (
+  filePath: string,
+  stats: Stats
+): Promise<void> => {
+  const jsonData = JSON.stringify(stats, null, 2)
+  await writeFile(filePath, jsonData, 'utf8')
+}
